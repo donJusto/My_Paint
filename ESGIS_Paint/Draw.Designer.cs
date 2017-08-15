@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Esgis_Paint));
             this.drawPN = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.quitBT = new System.Windows.Forms.Button();
+            this.mutePB = new System.Windows.Forms.PictureBox();
+            this.soundPB = new System.Windows.Forms.PictureBox();
+            this.neoBT = new System.Windows.Forms.Button();
             this.cercleLB = new System.Windows.Forms.Label();
             this.carreLB = new System.Windows.Forms.Label();
             this.rectLB = new System.Windows.Forms.Label();
@@ -40,9 +43,6 @@
             this.rectPB = new System.Windows.Forms.PictureBox();
             this.cerclePB = new System.Windows.Forms.PictureBox();
             this.carrePB = new System.Windows.Forms.PictureBox();
-            this.aboutBT = new System.Windows.Forms.Button();
-            this.saveBT = new System.Windows.Forms.Button();
-            this.neoBT = new System.Windows.Forms.Button();
             this.tabsizeTB = new System.Windows.Forms.TextBox();
             this.tabColBT = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +54,13 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.arrPN = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.savePB = new System.Windows.Forms.PictureBox();
+            this.exitPB = new System.Windows.Forms.PictureBox();
+            this.aboutPB = new System.Windows.Forms.PictureBox();
+            this.drawTT = new System.Windows.Forms.ToolTip(this.components);
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mutePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rectPB)).BeginInit();
@@ -62,6 +68,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.carrePB)).BeginInit();
             this.panel9.SuspendLayout();
             this.arrPN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.savePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aboutPB)).BeginInit();
             this.SuspendLayout();
             // 
             // drawPN
@@ -71,7 +80,7 @@
             this.drawPN.Cursor = System.Windows.Forms.Cursors.Cross;
             this.drawPN.Location = new System.Drawing.Point(-2, 1);
             this.drawPN.Name = "drawPN";
-            this.drawPN.Size = new System.Drawing.Size(575, 546);
+            this.drawPN.Size = new System.Drawing.Size(568, 546);
             this.drawPN.TabIndex = 1;
             this.drawPN.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawPN_MouseDown);
             this.drawPN.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drawPN_MouseMove);
@@ -81,7 +90,9 @@
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.Window;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel8.Controls.Add(this.quitBT);
+            this.panel8.Controls.Add(this.mutePB);
+            this.panel8.Controls.Add(this.soundPB);
+            this.panel8.Controls.Add(this.neoBT);
             this.panel8.Controls.Add(this.cercleLB);
             this.panel8.Controls.Add(this.carreLB);
             this.panel8.Controls.Add(this.rectLB);
@@ -90,9 +101,6 @@
             this.panel8.Controls.Add(this.rectPB);
             this.panel8.Controls.Add(this.cerclePB);
             this.panel8.Controls.Add(this.carrePB);
-            this.panel8.Controls.Add(this.aboutBT);
-            this.panel8.Controls.Add(this.saveBT);
-            this.panel8.Controls.Add(this.neoBT);
             this.panel8.Controls.Add(this.tabsizeTB);
             this.panel8.Controls.Add(this.tabColBT);
             this.panel8.Controls.Add(this.label2);
@@ -102,21 +110,45 @@
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.panel11);
             this.panel8.Controls.Add(this.arrPN);
-            this.panel8.Location = new System.Drawing.Point(571, 1);
+            this.panel8.Location = new System.Drawing.Point(572, 54);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(183, 546);
+            this.panel8.Size = new System.Drawing.Size(178, 488);
             this.panel8.TabIndex = 18;
             // 
-            // quitBT
+            // mutePB
             // 
-            this.quitBT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.quitBT.Location = new System.Drawing.Point(3, 516);
-            this.quitBT.Name = "quitBT";
-            this.quitBT.Size = new System.Drawing.Size(75, 23);
-            this.quitBT.TabIndex = 24;
-            this.quitBT.Text = "Quitter";
-            this.quitBT.UseVisualStyleBackColor = true;
-            this.quitBT.Click += new System.EventHandler(this.quitBT_Click);
+            this.mutePB.Image = ((System.Drawing.Image)(resources.GetObject("mutePB.Image")));
+            this.mutePB.Location = new System.Drawing.Point(134, 389);
+            this.mutePB.Name = "mutePB";
+            this.mutePB.Size = new System.Drawing.Size(35, 39);
+            this.mutePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mutePB.TabIndex = 25;
+            this.mutePB.TabStop = false;
+            this.drawTT.SetToolTip(this.mutePB, "MUTE");
+            this.mutePB.Click += new System.EventHandler(this.mutePB_Click);
+            // 
+            // soundPB
+            // 
+            this.soundPB.Image = ((System.Drawing.Image)(resources.GetObject("soundPB.Image")));
+            this.soundPB.Location = new System.Drawing.Point(88, 397);
+            this.soundPB.Name = "soundPB";
+            this.soundPB.Size = new System.Drawing.Size(30, 31);
+            this.soundPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.soundPB.TabIndex = 24;
+            this.soundPB.TabStop = false;
+            this.drawTT.SetToolTip(this.soundPB, "MUSIC");
+            this.soundPB.Click += new System.EventHandler(this.soundPB_Click);
+            // 
+            // neoBT
+            // 
+            this.neoBT.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.neoBT.Location = new System.Drawing.Point(88, 342);
+            this.neoBT.Name = "neoBT";
+            this.neoBT.Size = new System.Drawing.Size(88, 23);
+            this.neoBT.TabIndex = 14;
+            this.neoBT.Text = "Effacer";
+            this.neoBT.UseVisualStyleBackColor = true;
+            this.neoBT.Click += new System.EventHandler(this.neoBT_Click);
             // 
             // cercleLB
             // 
@@ -164,6 +196,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 20;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // rectPB
             // 
@@ -179,12 +212,12 @@
             // 
             // cerclePB
             // 
-            this.cerclePB.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cerclePB.BackColor = System.Drawing.SystemColors.Control;
             this.cerclePB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cerclePB.Image = ((System.Drawing.Image)(resources.GetObject("cerclePB.Image")));
-            this.cerclePB.Location = new System.Drawing.Point(6, 386);
+            this.cerclePB.Location = new System.Drawing.Point(11, 386);
             this.cerclePB.Name = "cerclePB";
-            this.cerclePB.Size = new System.Drawing.Size(57, 42);
+            this.cerclePB.Size = new System.Drawing.Size(51, 42);
             this.cerclePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cerclePB.TabIndex = 4;
             this.cerclePB.TabStop = false;
@@ -194,49 +227,17 @@
             // 
             this.carrePB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.carrePB.Image = ((System.Drawing.Image)(resources.GetObject("carrePB.Image")));
-            this.carrePB.Location = new System.Drawing.Point(11, 307);
+            this.carrePB.Location = new System.Drawing.Point(3, 318);
             this.carrePB.Name = "carrePB";
-            this.carrePB.Size = new System.Drawing.Size(50, 51);
+            this.carrePB.Size = new System.Drawing.Size(64, 56);
             this.carrePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.carrePB.TabIndex = 5;
             this.carrePB.TabStop = false;
             this.carrePB.Click += new System.EventHandler(this.carreTB_Click);
             // 
-            // aboutBT
-            // 
-            this.aboutBT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.aboutBT.Location = new System.Drawing.Point(96, 516);
-            this.aboutBT.Name = "aboutBT";
-            this.aboutBT.Size = new System.Drawing.Size(75, 23);
-            this.aboutBT.TabIndex = 16;
-            this.aboutBT.Text = "A Propos";
-            this.aboutBT.UseVisualStyleBackColor = true;
-            // 
-            // saveBT
-            // 
-            this.saveBT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveBT.Location = new System.Drawing.Point(36, 468);
-            this.saveBT.Name = "saveBT";
-            this.saveBT.Size = new System.Drawing.Size(88, 23);
-            this.saveBT.TabIndex = 15;
-            this.saveBT.Text = "Sauver";
-            this.saveBT.UseVisualStyleBackColor = true;
-            this.saveBT.Click += new System.EventHandler(this.saveBT_Click);
-            // 
-            // neoBT
-            // 
-            this.neoBT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.neoBT.Location = new System.Drawing.Point(83, 356);
-            this.neoBT.Name = "neoBT";
-            this.neoBT.Size = new System.Drawing.Size(88, 23);
-            this.neoBT.TabIndex = 14;
-            this.neoBT.Text = "Effacer";
-            this.neoBT.UseVisualStyleBackColor = true;
-            this.neoBT.Click += new System.EventHandler(this.neoBT_Click);
-            // 
             // tabsizeTB
             // 
-            this.tabsizeTB.Location = new System.Drawing.Point(81, 287);
+            this.tabsizeTB.Location = new System.Drawing.Point(88, 287);
             this.tabsizeTB.Name = "tabsizeTB";
             this.tabsizeTB.Size = new System.Drawing.Size(88, 20);
             this.tabsizeTB.TabIndex = 9;
@@ -248,7 +249,7 @@
             this.tabColBT.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabColBT.Font = new System.Drawing.Font("Book Antiqua", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabColBT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.tabColBT.Location = new System.Drawing.Point(81, 259);
+            this.tabColBT.Location = new System.Drawing.Point(88, 259);
             this.tabColBT.Name = "tabColBT";
             this.tabColBT.Size = new System.Drawing.Size(88, 24);
             this.tabColBT.TabIndex = 8;
@@ -297,9 +298,9 @@
             this.label3.BackColor = System.Drawing.SystemColors.Menu;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("BoomBox", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-2, 1);
+            this.label3.Location = new System.Drawing.Point(-2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 26);
+            this.label3.Size = new System.Drawing.Size(183, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "DESSINATEUR";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -345,18 +346,65 @@
             this.panel1.Size = new System.Drawing.Size(183, 113);
             this.panel1.TabIndex = 1;
             // 
+            // savePB
+            // 
+            this.savePB.Image = ((System.Drawing.Image)(resources.GetObject("savePB.Image")));
+            this.savePB.Location = new System.Drawing.Point(587, 4);
+            this.savePB.Name = "savePB";
+            this.savePB.Size = new System.Drawing.Size(43, 47);
+            this.savePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.savePB.TabIndex = 25;
+            this.savePB.TabStop = false;
+            this.drawTT.SetToolTip(this.savePB, "SAUVEGARDER");
+            this.savePB.Click += new System.EventHandler(this.saveBT_Click);
+            // 
+            // exitPB
+            // 
+            this.exitPB.Image = ((System.Drawing.Image)(resources.GetObject("exitPB.Image")));
+            this.exitPB.Location = new System.Drawing.Point(701, 7);
+            this.exitPB.Name = "exitPB";
+            this.exitPB.Size = new System.Drawing.Size(42, 44);
+            this.exitPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.exitPB.TabIndex = 26;
+            this.exitPB.TabStop = false;
+            this.drawTT.SetToolTip(this.exitPB, "QUITTER");
+            this.exitPB.Click += new System.EventHandler(this.quitBT_Click);
+            // 
+            // aboutPB
+            // 
+            this.aboutPB.Image = ((System.Drawing.Image)(resources.GetObject("aboutPB.Image")));
+            this.aboutPB.Location = new System.Drawing.Point(644, 4);
+            this.aboutPB.Name = "aboutPB";
+            this.aboutPB.Size = new System.Drawing.Size(40, 47);
+            this.aboutPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.aboutPB.TabIndex = 27;
+            this.aboutPB.TabStop = false;
+            this.drawTT.SetToolTip(this.aboutPB, "INFO");
+            this.aboutPB.Click += new System.EventHandler(this.aboutPB_Click);
+            // 
+            // drawTT
+            // 
+            this.drawTT.AutoPopDelay = 5000;
+            this.drawTT.InitialDelay = 50;
+            this.drawTT.ReshowDelay = 100;
+            // 
             // Esgis_Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 547);
+            this.Controls.Add(this.aboutPB);
             this.Controls.Add(this.panel8);
+            this.Controls.Add(this.savePB);
+            this.Controls.Add(this.exitPB);
             this.Controls.Add(this.drawPN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Esgis_Paint";
             this.Text = "ESGIS PAINT";
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mutePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rectPB)).EndInit();
@@ -364,6 +412,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.carrePB)).EndInit();
             this.panel9.ResumeLayout(false);
             this.arrPN.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.savePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aboutPB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,8 +426,6 @@
         private System.Windows.Forms.PictureBox rectPB;
         private System.Windows.Forms.PictureBox cerclePB;
         private System.Windows.Forms.PictureBox carrePB;
-        private System.Windows.Forms.Button aboutBT;
-        private System.Windows.Forms.Button saveBT;
         private System.Windows.Forms.Button neoBT;
         private System.Windows.Forms.TextBox tabsizeTB;
         private System.Windows.Forms.Button tabColBT;
@@ -392,9 +441,14 @@
         private System.Windows.Forms.Panel arrPN;
         private System.Windows.Forms.Label carreLB;
         private System.Windows.Forms.Label rectLB;
-        private System.Windows.Forms.Button quitBT;
         private System.Windows.Forms.Label cercleLB;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox savePB;
+        private System.Windows.Forms.PictureBox exitPB;
+        private System.Windows.Forms.PictureBox aboutPB;
+        private System.Windows.Forms.PictureBox mutePB;
+        private System.Windows.Forms.PictureBox soundPB;
+        private System.Windows.Forms.ToolTip drawTT;
     }
 }
 

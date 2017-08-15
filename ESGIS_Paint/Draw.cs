@@ -1,21 +1,21 @@
-﻿using System;
+﻿using ESGIS_Paint.Class_log;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ESGIS_Paint
 {
     public partial class Esgis_Paint : Form
+       
     {
+        Log log;
         public Esgis_Paint()
         {
             InitializeComponent();
             g = drawPN.CreateGraphics();
+            //log = new Class_log();
+
         }
 
 
@@ -28,7 +28,6 @@ namespace ESGIS_Paint
         bool dessRectangle = false;
         bool drawCercle = false;
         List<Point> draws = new List<Point>();
-        Point pt = new Point();
         private void drawPN_MouseMove(object sender, MouseEventArgs e)
         {
             if (drawDebut)
@@ -39,10 +38,8 @@ namespace ESGIS_Paint
                 g.DrawLine(p, new Point(initX ?? e.X, initY ?? e.Y), new Point(e.X, e.Y));
                 initX = e.X;
                 initY = e.Y;
-                pt = e.Location;
+                Point pt = new Point(e.X,e.Y);
                 draws.Add(pt);
-
-                //draws.add(pt);
             }
         }
         //Event Fired when the mouse pointer is over Panel and a mouse button is pressed
@@ -59,6 +56,9 @@ namespace ESGIS_Paint
                 //setting drawDebut and dessCarre value to false for creating one graphic on one click.
                 drawDebut = false;
                 dessCarre = false;
+                Point pt = new Point(e.X, e.Y);
+                draws.Add(pt);
+
             }
             if (dessRectangle)
             {
@@ -67,6 +67,9 @@ namespace ESGIS_Paint
                 g.FillRectangle(sb, e.X, e.Y, 2 * int.Parse(tabsizeTB.Text), int.Parse(tabsizeTB.Text));
                 drawDebut = false;
                 dessRectangle = false;
+                //Point pt = new Point(e.X, e.Y);
+                //draws.Add(pt);
+
             }
             if (drawCercle)
             {
@@ -74,9 +77,10 @@ namespace ESGIS_Paint
                 g.FillEllipse(sb, e.X, e.Y, int.Parse(tabsizeTB.Text), int.Parse(tabsizeTB.Text));
                 drawDebut = false;
                 drawCercle = false;
+                //Point pt = new Point(e.X, e.Y);
+                //draws.Add(pt);
+
             }
-            pt = e.Location;
-            draws.Add(pt);
         }
         //Fired when the mouse pointer is over the drawPN and a mouse button is released.
         private void drawPN_MouseUp(object sender, MouseEventArgs e)
@@ -84,8 +88,6 @@ namespace ESGIS_Paint
             drawDebut = false;
             initX = null;
             initY = null;
-            pt = e.Location;
-            draws.Add(pt);
 
         }
         //Button for Setting pen Color
@@ -107,7 +109,6 @@ namespace ESGIS_Paint
             drawPN.BackColor = Color.White;
             tabColBT.BackColor = Color.White;
         }
-        //Setting the Canvas Color
         private void tabcolorTB_Click(object sender, EventArgs e)
 
         {
@@ -116,6 +117,7 @@ namespace ESGIS_Paint
             {
                 drawPN.BackColor = c.Color;
                 tabColBT.BackColor = c.Color;
+
             }
         }
 
@@ -136,18 +138,11 @@ namespace ESGIS_Paint
         //Exit under File Menu
         private void quitBT_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to Exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MessageBox.Show("Tu es sûr de vouloir déjà partir?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
-
-        //About under Help Menu
-        //private void aboutMiniPaintToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    About a = new About();
-        //    a.ShowDialog();
-        //}
 
 
         private void saveBT_Click(object sender, EventArgs e)
@@ -161,7 +156,7 @@ namespace ESGIS_Paint
             saveDialog.Filter = "Image (*.JPG)|*.JPG";
 
             //Draw all point to Graphics
-            //bitGraphics.DrawLines(p, draws.ToArray());
+            bitGraphics.DrawLines(p, draws.ToArray());
 
             //We name the image with words typed by the user
             if (saveDialog.ShowDialog() == DialogResult.OK)
@@ -170,6 +165,29 @@ namespace ESGIS_Paint
                 //log.writeSaveAction(saveDialog.FileName);
                 MessageBox.Show("Good Job ! \nSave Done!","SAUVEGARDE");
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void soundPB_Click(object sender, EventArgs e)
+        {
+            menuF pagemenuF = new menuF();
+            pagemenuF.Play();
+        }
+
+        private void mutePB_Click(object sender, EventArgs e)
+        {
+            menuF pagemenuF = new menuF();
+            pagemenuF.Stop();
+        }
+
+        private void aboutPB_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ESGIS_PAINT 1.0 \nBy Juste LAHAMI !", "Copyright");
+
         }
     }
 }
